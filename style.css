@@ -47,6 +47,13 @@
     width: 26px; height: 26px; border-radius: 8px;
     background: linear-gradient(135deg, #111, #444);
   }
+  .brand-img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;     /* makes it circular */
+    object-fit: cover;      /* crops nicely */
+  }
+  
   .nav a {
     color: var(--text); text-decoration: none;
     padding: 10px 12px; border-radius: 10px;
