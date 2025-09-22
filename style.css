@@ -80,7 +80,7 @@
   }
   .cta {
     display: flex; gap: 14px; margin-top: 28px;
-    margin-bottom: 40px; /* extra gap below buttons */
+    margin-bottom: 50px; /* extra gap below buttons */
   }
   .btn {
     appearance: none;
