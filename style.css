@@ -189,21 +189,29 @@
   .contact-card:hover { border-color: var(--accent); }
   .icons {
     display: flex;
-    flex-wrap: wrap;  /* allow wrapping instead of overlap */
-    gap: 16px;        /* space between icons */
+    flex-wrap: wrap;
+    gap: 16px;
   }
   .icons a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px; height: 44px; /* fixed square */
+    width: 44px; height: 44px;
     border-radius: 12px;
     border: 1px solid var(--hairline);
     transition: all .25s ease;
-    font-size: 14px;
     background: var(--bg);
+    color: var(--text);
   }
-  .icons a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .icons a:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .icons svg {
+    width: 20px; height: 20px;
+  }
+  
   
   /* Footer */
   footer { padding: 40px 0; color: var(--muted); }
