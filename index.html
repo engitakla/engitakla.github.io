@@ -1,316 +1,228 @@
-
-<!DOCTYPE html>
-<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<!doctype html>
+<html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Engi Takla — Portfolio</title>
+  <meta name="description" content="Computer Science student portfolio — projects, experience, coursework, and contact." />
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+  <style>
+    :root{ --bg:#ffffff; --text:#111111; --muted:#6b7280; --card:#f7f7f7; --accent:#0a84ff; --hairline:#e5e7eb; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.06);} 
+    @media (prefers-color-scheme: dark){ :root{ --bg:#0b0b0c; --text:#e5e7eb; --muted:#9ca3af; --card:#111214; --accent:#0a84ff; --hairline:#1f2937;} }
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial}
+    .container{max-width:1100px;margin:0 auto;padding:0 24px}
 
-   <!--- Basic Page Needs
-   ================================================== -->
-   <meta charset="utf-8">
-	<title>Engi Takla</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(10px);background:color-mix(in srgb, var(--bg) 80%, transparent);border-bottom:1px solid var(--hairline)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:600}
+    .brand-logo{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#111,#444)}
+    .nav a{color:var(--text);text-decoration:none;padding:10px 12px;border-radius:10px;transition:all .25s ease}
+    .nav a:hover{background:var(--accent);color:#fff}
 
-   <!-- Mobile Specific Metas
-   ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    header{padding:120px 0 80px}
+    .kicker{color:var(--muted);font-weight:500;letter-spacing:.2em;text-transform:uppercase}
+    h1{font-size:clamp(36px,6.2vw,64px);line-height:1.05;margin:12px 0 16px;letter-spacing:-.02em}
+    .lede{font-size:clamp(16px,2.4vw,20px);color:var(--muted);max-width:60ch}
+    .cta{display:flex;gap:14px;margin-top:28px}
+    .btn{appearance:none;border:0;border-radius:14px;padding:12px 18px;font-weight:600;cursor:pointer;transition:all .3s ease}
+    .btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 14px rgba(10,132,255,.3)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(10,132,255,.4)}
+    .btn-ghost{background:transparent;border:1px solid var(--hairline);color:var(--text)}
+    .btn-ghost:hover{background:var(--card);border-color:var(--accent);color:var(--accent)}
 
-	<!-- CSS
-    ================================================== -->
-   <link rel="stylesheet" href="css/default.css">
-	<link rel="stylesheet" href="css/layout.css">
-   <link rel="stylesheet" href="css/media-queries.css">
-   <link rel="stylesheet" href="css/magnific-popup.css">
+    section{padding:80px 0;border-top:1px solid var(--hairline)}
+    .section-title{font-size:28px;margin:0 0 14px}
+    .section-lede{color:var(--muted);margin:0 0 28px}
 
-   <!-- Script
-   ================================================== -->
-	<script src="js/modernizr.js"></script>
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);border-radius:18px;padding:18px;border:1px solid var(--hairline);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;transition:transform .25s ease, box-shadow .25s ease}
+    .card:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(0,0,0,.15)}
+    .thumb{width:100%;aspect-ratio:16/9;border-radius:12px;background:linear-gradient(135deg,#e0f2ff,#f3f4f6)}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+    .tag{font-size:12px;background:rgba(10,132,255,.08);border:1px solid rgba(10,132,255,.25);color:var(--accent);padding:4px 8px;border-radius:999px;transition:all .25s ease}
+    .tag:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 
-   <!-- Favicons
-	================================================== -->
-	<link rel="shortcut icon" href="profilepic.jpg" >
+    .timeline{display:grid;gap:16px}
+    .item{display:flex;gap:16px;align-items:flex-start;transition:transform .25s ease}
+    .item:hover{transform:translateX(4px)}
+    .dotline{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:10px}
+    .item h4{margin:0}
+    .item .where{color:var(--muted);font-weight:500}
 
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{padding:10px 12px;border-radius:12px;border:1px solid var(--hairline);transition:all .25s ease}
+    .skill:hover{border-color:var(--accent);color:var(--accent);background:rgba(10,132,255,.05)}
+
+    .course-list{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+    .course{padding:14px;border-radius:14px;background:var(--card);border:1px solid var(--hairline);box-shadow:var(--shadow);transition:all .25s ease}
+    .course:hover{transform:translateY(-4px);border-color:var(--accent)}
+
+    .contact-card{display:flex;flex-direction:column;gap:16px;background:var(--card);border-radius:18px;padding:22px;border:1px solid var(--hairline);box-shadow:var(--shadow);transition:all .25s ease}
+    .contact-card:hover{border-color:var(--accent)}
+    .icons{display:flex;gap:12px}
+    .icons a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;border:1px solid var(--hairline);transition:all .25s ease}
+    .icons a:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+    footer{padding:40px 0;color:var(--muted)}
+
+    @media (max-width:960px){ .projects{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:640px){ .projects{grid-template-columns:1fr} .cta{flex-direction:column;align-items:flex-start} }
+  </style>
 </head>
-
 <body>
-
-   <!-- Header
-   ================================================== -->
-   <header id="home">
-
-      <nav id="nav-wrap">
-
-         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
-	      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
-
-         <ul id="nav" class="nav">
-            <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
-            <li><a class="smoothscroll" href="#about">About</a></li>
-	         <li><a class="smoothscroll" href="#resume">Resume</a></li>
-         </ul> <!-- end #nav -->
-
-      </nav> <!-- end #nav-wrap -->
-
-      <div class="row banner">
-         <div class="banner-text">
-            <h1 class="responsive-headline">I'm Engi Takla.</h1>
-            <h3>I'm a computer science student with an interest in web design and development. Let's <a class="smoothscroll" href="#about">start scrolling</a>
-            and learn more <a class="smoothscroll" href="#about">about me</a>.</h3>
-            <hr />
-            <ul class="social">
-               <li><a href="https://github.com/engitakla"><i class="fa fa-github"></i></a></li>
-               <li><a href="https://www.linkedin.com/in/engitakla/"><i class="fa fa-linkedin"></i></a></li>              
-            </ul>
-         </div>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><div class="brand-logo"></div> <span>Engi Takla</span></div>
+      <div>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#coursework">Coursework</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
       </div>
+    </div>
+  </nav>
 
-      <p class="scrolldown">
-         <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
-      </p>
+  <header class="container">
+    <div class="kicker">Computer Science • Calgary, AB</div>
+    <h1>Building clean, human‑centred software.</h1>
+    <p class="lede">CS student with hands‑on experience in SQL, Python, and data analysis, complemented by a B.A. in Psychology. Comfortable organizing and interpreting data to create user‑centred, data‑driven solutions.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#projects">See my work</a>
+      <a class="btn btn-ghost" href="resume.pdf" target="_blank" rel="noreferrer">Download résumé</a>
+    </div>
+  </header>
 
-   </header> <!-- Header End -->
-
-
-   <!-- About Section
-   ================================================== -->
-   <section id="about">
-
-      <div class="row">
-
-         <div class="three columns">
-
-            <img class="profile-pic"  src="images/profilepic.jpg" alt="" />
-
-         </div>
-
-         <div class="nine columns main-col">
-
-            <h2>About Me</h2>
-
-            <p> Hey there! I'm thrilled to welcome you to my corner of the digital world. 
-                I'm a passionate explorer of both the intricacies of computer science and the depths of human psychology. 
-                With a dual degree in Computer Science and Psychology, I've embarked on a journey to bridge the gap between the technical and the human aspects of life. </p>
-                
-            <p>Web development and design have become my creative playground, where I can seamlessly blend my love for technology and aesthetics. 
-               The art of creating visually stunning and user-friendly digital experiences fascinates me endlessly. 
-               Whether it's crafting elegant user interfaces or diving into the intricacies of coding, I find immense joy in bringing ideas to life on the virtual canvas.</p>
-                
-            <p>When I'm not immersed in the digital realm, you'll often find me basking in the warmth of human connections. 
-                Nothing beats spending quality time with my cherished family and friends, sharing stories, laughter, and making memories that last a lifetime. 
-                Music is my constant companion on this journey, each melody providing a soundtrack to the moments that shape my days.</p>
-                
-            <p>Nature's wonders never fail to captivate me, and chasing sunsets has become a soul-soothing ritual. 
-                The vibrant hues painting the sky during those fleeting moments remind me of the beauty that exists beyond screens and codes.</p>
-                
-            <p>This website serves as a reflection of my passions, experiences, and the intricate web of thoughts that make up my world. 
-                Join me as I continue to navigate the ever-evolving landscape of technology, design, and the human psyche. 
-                Let's embark on this adventure together and create a digital tapestry that mirrors the kaleidoscope of life's wonders.</p>
-                
-            <p>Thank you for stopping by, and I hope you enjoy your time here as much as I enjoy sharing it with you.</p>
-
-            <div class="row">
-
-               <div class="columns contact-details">
-
-                  <h2>Contact Details</h2>
-                  <p class="address">
-						   <span>Engi Takla</span><br>
-						   
-						   <span>(403)968-4773</span><br>
-                     <span>engitakla@gmail.com</span>
-					   </p>
-
-               </div>
-
-            
-
-            </div> <!-- end row -->
-
-         </div> <!-- end .main-col -->
-
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Selected Projects</h2>
+      <p class="section-lede">A few things I’ve built or designed. More on <a href="https://github.com/engitakla" target="_blank" rel="noreferrer">GitHub</a>.</p>
+      <div class="projects">
+        <article class="card">
+          <div class="thumb"></div>
+          <h3>Recipe Box — full‑stack web app</h3>
+          <p>Browse, favorite, and organize recipes with a clean UI. React front‑end, Django REST API, MySQL.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">Django</span><span class="tag">MySQL</span></div>
+          <p><a href="https://github.com/engitakla" target="_blank" rel="noreferrer">Source</a></p>
+        </article>
+        <article class="card">
+          <div class="thumb"></div>
+          <h3>Air Quality Data Analysis</h3>
+          <p>Analyzed Calgary air‑quality datasets; built visualizations to communicate factors contributing to poor AQI.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span></div>
+        </article>
+        <article class="card">
+          <div class="thumb"></div>
+          <h3>Student Portal — UX prototype</h3>
+          <p>Re‑imagined portal focused on usability/accessibility using HCI techniques; built in React/HTML.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">HCI</span></div>
+        </article>
+        <article class="card">
+          <div class="thumb"></div>
+          <h3>Cyber Security Adventure</h3>
+          <p>Choose‑your‑own‑path, web‑based game with hand‑drawn art to teach digital security practices.</p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+        </article>
+        <article class="card">
+          <div class="thumb"></div>
+          <h3>Mini Games & Utilities</h3>
+          <p>Python text adventures and Java grade calculator (CLI + GUI) exploring logic, state, and UI basics.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Java</span></div>
+        </article>
       </div>
+    </div>
+  </section>
 
-   </section> <!-- About Section End-->
-
-
-   <!-- Resume Section
-   ================================================== -->
-   <section id="resume">
-
-      <!-- Education
-      ----------------------------------------------- -->
-      <div class="row education">
-
-         <div class="three columns header-col">
-            <h1><span>Education</span></h1>
-         </div>
-
-         <div class="nine columns main-col">
-
-            <div class="row item">
-
-               <div class="twelve columns">
-
-                  <h3>University of Calgary</h3>
-                  <p class="info">B.Sc. in Computer Science </p>
-
-                  <p>
-                    Navigating the realm of computer science during my B.Sc journey has been a thrilling adventure. 
-                    From diving into complex algorithms that felt like solving puzzles, to witnessing the sheer power of coding bring ideas to life, every step has been a blend of challenge and excitement. 
-                    The late-night coding sessions and "aha!" moments of problem-solving have not only expanded my technical prowess but also instilled in me a deep appreciation for the boundless possibilities that technology offers. 
-                  </p>
-
-               </div>
-
-            </div> <!-- item end -->
-
-            <div class="row item">
-
-               <div class="twelve columns">
-
-                  <h3>Mount Royal University</h3>
-                  <p class="info">B.A. in Psychology</p>
-
-                  <p>
-                    Embarking on the journey to earn my psychology degree has been a profound exploration into the human mind and behavior. 
-                    Delving into the intricacies of the human psyche, I've uncovered the fascinating layers that shape our thoughts, emotions, and actions. 
-                    From delving into Freudian theories to understanding the intricacies of cognitive processes, each lesson has offered a new perspective on how we perceive ourselves and those around us. 
-                    As I reflect on my time completing my psychology degree, I'm not only equipped with knowledge but also a deep empathy that enriches my understanding of both technology and personal interactions.
-                  </p>
-
-               </div>
-
-            </div> <!-- item end -->
-
-         </div> <!-- main-col end -->
-
-      </div> <!-- End Education -->
-
-
-      <!-- Work
-      ----------------------------------------------- -->
-      <div class="row work">
-
-         <div class="three columns header-col">
-            <h1><span>Experinces</span></h1>
-         </div>
-
-         <div class="nine columns main-col">
-
-            <div class="row item">
-
-               <div class="twelve columns">
-
-                  <h3>Personal Website</h3>
-
-                  <p>
-                    Created a personal website using HTML and CSS, showcasing my projects and skills. 
-                    Implemented responsive design principles to ensure optimal user experiences across different devices.
-                  </p>
-
-               </div>
-
-            </div> <!-- item end -->
-
-            <div class="row item">
-
-               <div class="twelve columns">
-
-                  <h3>Course Projects</h3>
-
-                  <p>
-                    - An Adventure Game: Created a text-based adventure game in Python.
-                  </p>
-                  <p> - Grade calculator: Created a basic grade calculator in Python, and a more advanced version with a graphical interface in Java. </p>
-                  <p> - Cyber Security Adventure Game: Choose your own fate, text-based adventure game with images made in HTML</p>
-
-               </div>
-
-            </div> <!-- item end -->
-
-         </div> <!-- main-col end -->
-
-      </div> <!-- End Work -->
-
-
-      <!-- Skills
-      ----------------------------------------------- -->
-      <div class="row skill">
-
-         <div class="three columns header-col">
-            <h1><span>Skills</span></h1>
-         </div>
-
-         <div class="nine columns main-col">
-
-            <ul class="skills">
-                <li>Programming Languages: Python, Java, HTML, CSS, JavaScript</li>
-                <li>Version Control: Git</li>
-                <li>Operating Systems: MacOS, Windows</li>
-                <li>Problem-Solving: Analytical thinking, Troubleshooting</li>
-                <li>Collaboration: Effective communication, Teamwork</li>
-            </ul>
-
-				<!-- <div class="bars">
-
-				   <ul class="skills">
-					   <li><span class="bar-expand photoshop"></span><em>Photoshop</em></li>
-                  <li><span class="bar-expand illustrator"></span><em>Illustrator</em></li>
-						<li><span class="bar-expand wordpress"></span><em>Wordpress</em></li>
-						<li><span class="bar-expand css"></span><em>CSS</em></li>
-						<li><span class="bar-expand html5"></span><em>HTML5</em></li>
-                  <li><span class="bar-expand jquery"></span><em>jQuery</em></li>
-					</ul>
-
-				</div> --> <!-- end skill-bars -->
-
-			</div> <!-- main-col end -->
-
-      </div> <!-- End skills -->
-
-   </section> <!-- Resume Section End-->
-
-
-
-   <!-- footer
-   ================================================== -->
-   <footer>
-
-      <div class="row">
-
-         <div class="twelve columns">
-
-            <ul class="social-links">
-              
-               <li><a href="https://github.com/engitakla"><i class="fa fa-github"></i></a></li>
-               <li><a href="https://www.linkedin.com/in/engitakla/"><i class="fa fa-linkedin"></i></a></li>
-              
-            </ul>
-
-            <ul class="copyright">
-               <li>&copy; Engi Takla</li>
-               <li>Images: <a href="http://www.unsplash.com//" title="UnSplash" target="_blank">UnSplash</a></li>   
-            </ul>
-
-         </div>
-         
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        <div class="item">
+          <div class="dotline"></div>
+          <div>
+            <h4>Administrative & IT Support <span class="where">— Takla Brothers Moving</span></h4>
+            <p>Oversaw bookkeeping, payroll, invoicing, and reconciliations (QuickBooks + Square); maintained the website and access controls; organized data and reports for leadership decisions.</p>
+            <p class="where">Feb 2024 – Present · Calgary, AB</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="dotline"></div>
+          <div>
+            <h4>Receptionist <span class="where">— Lakeview Physiotherapy & Acupuncture</span></h4>
+            <p>Coordinated with 25+ practitioners, optimized scheduling, managed billing and sensitive communications with legal/insurance; improved product cost calculation and order tracking processes.</p>
+            <p class="where">Aug 2018 – Sept 2024 · Calgary, AB</p>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
 
-   </footer> <!-- Footer End-->
+  <section id="coursework">
+    <div class="container">
+      <h2 class="section-title">Relevant Coursework</h2>
+      <p class="section-lede">Core CS courses that shaped my skills and interests.</p>
+      <div class="course-list">
+        <div class="course">CPSC 471 — Database Management Systems · Designed schemas, implemented SQL apps and reports.</div>
+        <div class="course">CPSC 457 — Operating Systems · CPU scheduling, memory management, concurrency.</div>
+        <div class="course">CPSC 481 — Human‑Computer Interaction · Usability testing, heuristic evaluation, UI prototyping.</div>
+        <div class="course">CPSC 526 — Computer Networks & Security · Client/server apps, secure protocols, firewall basics.</div>
+        <div class="course">CPSC 550 — Data Engineering · Streaming ETL in Python/SQLite; Type‑2 SCDs.</div>
+        <div class="course">CPSC 383 — Machine Learning · Data prep, supervised learning, visualization.</div>
+      </div>
+    </div>
+  </section>
 
-   <!-- Java Script
-   ================================================== -->
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
-   <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-lede">Tech I use regularly.</p>
+      <div class="skills">
+        <span class="skill">SQL</span>
+        <span class="skill">Python</span>
+        <span class="skill">Java</span>
+        <span class="skill">HTML / CSS</span>
+        <span class="skill">C</span>
+        <span class="skill">MySQL</span>
+        <span class="skill">Git</span>
+        <span class="skill">Pandas</span>
+        <span class="skill">Matplotlib</span>
+        <span class="skill">PyCharm / VS / Eclipse</span>
+        <span class="skill">JUnit Testing</span>
+      </div>
+    </div>
+  </section>
 
-   <script src="js/jquery.flexslider.js"></script>
-   <script src="js/waypoints.js"></script>
-   <script src="js/jquery.fittext.js"></script>
-   <script src="js/magnific-popup.js"></script>
-   <script src="js/init.js"></script>
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get in touch</h2>
+      <div class="contact-card">
+        <div>
+          <strong>Email</strong>
+          <div><a href="mailto:engitakla@gmail.com">engitakla@gmail.com</a></div>
+        </div>
+        <div>
+          <strong>Phone</strong>
+          <div><a href="tel:+14039684773">(403) 968‑4773</a></div>
+        </div>
+        <div>
+          <strong>Links</strong>
+          <div class="icons">
+            <a href="https://github.com/engitakla" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://engitakla.github.io" target="_blank" rel="noreferrer">Website</a>
+            <a href="https://www.linkedin.com/in/your-handle/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <footer>
+    <div class="container">© <span id="year"></span> Engi Takla. Built with plain HTML/CSS/JS.</div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
 </body>
-
 </html>
