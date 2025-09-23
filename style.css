@@ -174,7 +174,7 @@
   .timeline { display: grid; gap: 16px; }
   .item { display: flex; gap: 16px; align-items: flex-start; transition: transform .25s ease; }
   .item:hover { transform: translateX(4px); }
-  .dotline { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); margin-top: 10px; }
+  .dotline { flex-shrink: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); margin-top: 6px; }
   .item h4 { margin: 0; }
   .item .where { color: var(--muted); font-weight: 500; }
   
