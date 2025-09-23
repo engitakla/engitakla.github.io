@@ -155,7 +155,7 @@
     object-fit: cover;   /* crop nicely */
     display: block;
     background: none;    /* remove gradient fallback */
-    background: linear-gradient(135deg, #e0f2ff, #f3f4f6);
+    background: linear-gradient(135deg, #7ebbe6, #f3f4f6);
   }
   .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
   .tag {
