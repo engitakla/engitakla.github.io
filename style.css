@@ -149,7 +149,12 @@
   }
   .card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(0,0,0,.15); }
   .thumb {
-    width: 100%; aspect-ratio: 16/9; border-radius: 12px;
+    width: 100%; 
+    aspect-ratio: 16/9; 
+    border-radius: 12px;
+    object-fit: cover;   /* crop nicely */
+    display: block;
+    background: none;    /* remove gradient fallback */
     background: linear-gradient(135deg, #e0f2ff, #f3f4f6);
   }
   .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
