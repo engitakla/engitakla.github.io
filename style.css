@@ -152,7 +152,7 @@
     width: 100%; 
     aspect-ratio: 16/9; 
     border-radius: 12px;
-    object-fit: cover;   /* crop nicely */
+    object-fit: contain;   /* crop nicely */
     display: block;
     background: none;    /* remove gradient fallback */
     background: linear-gradient(135deg, #7ebbe6, #f3f4f6);
