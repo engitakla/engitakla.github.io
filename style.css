@@ -152,7 +152,8 @@
     width: 100%; 
     aspect-ratio: 16/9; 
     border-radius: 12px;
-    object-fit: contain;   /* crop nicely */
+    max-height: 160px;
+    object-fit: contain;   
     display: block;
     background: none;    /* remove gradient fallback */
     background: linear-gradient(135deg, #7ebbe6, #f3f4f6);
