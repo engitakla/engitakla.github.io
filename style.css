@@ -129,7 +129,36 @@
     border-color: var(--accent);
     color: var(--accent);
   }
-  
+  /*Memoji/Hero Image*/
+  .hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-img img {
+  width: 220px;          /* adjust size */
+  height: auto;
+  border-radius: 50%;    /* keep circular */
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-img {
+    margin-top: 24px;
+  }
+}
+
+
   /* Sections */
   section { padding: 80px 0; border-top: 1px solid var(--hairline); }
   header + section { margin-top: 12px; } /* pushes border down a bit */
